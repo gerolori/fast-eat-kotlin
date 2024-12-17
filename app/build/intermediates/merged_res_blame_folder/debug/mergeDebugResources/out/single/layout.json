@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-mergeDebugResources-47:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-main-50:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-mergeDebugResources-47:\\layout\\fragment_notifications.xml",
+        "source": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-main-50:\\layout\\fragment_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-mergeDebugResources-47:\\layout\\fragment_dashboard.xml",
+        "source": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-main-50:\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.example.mangiaebasta.app-mergeDebugResources-47:/layout/activity_main.xml",
+        "source": "com.example.mangiaebasta.app-main-50:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-mergeDebugResources-47:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\lorig\\.gradle\\daemon\\8.9\\com.example.mangiaebasta.app-main-50:\\layout\\activity_main.xml"
+    }
+]
