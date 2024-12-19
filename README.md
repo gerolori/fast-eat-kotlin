@@ -8,7 +8,7 @@ App that delivers food by drones. Menu can be ordered from a list of closeby res
 - [Project document](https://myariel.unimi.it/pluginfile.php/260624/mod_resource/content/1/Progetto%202425%20V1.pdf)
 
 ## Epics
-1. MENU: User can see a list of the menus at flight distance, every menu has:
+### EP-01: MENU: User can see a list of the menus at flight distance, every menu has:
    - Name
    - Image
    - Cost
@@ -23,8 +23,8 @@ App that delivers food by drones. Menu can be ordered from a list of closeby res
     Limitations:
     - User can't order more if there's a pending order.
     - User can't order if he did not complete all the profile info.
-    
-2. PROFILE: User can see and modify his own info in a profile page.
+
+### EP-02: PROFILE: User can see and modify his own info in a profile page.
    - Name, surname
    - Credit card info
      - Name Surname (only one field)
@@ -36,7 +36,7 @@ App that delivers food by drones. Menu can be ordered from a list of closeby res
     Name and Surname are max 15 chars. Credit card number is 31 char max.
 
 
-3. ORDER: After ordering the menu appears in the user info page (and right after placing order).
+### EP-03: ORDER: After ordering the menu appears in the user info page (and right after placing order).
    - Name
    - Status (delivering | delivered)
    - ETA (TA for already delivered orders)
