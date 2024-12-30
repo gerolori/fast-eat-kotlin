@@ -36,7 +36,7 @@ App that delivers food by drones. Menu can be ordered from a list of closeby res
     Name and Surname are max 15 chars. Credit card number is 31 char max.
 
 
-### EP-03: ORDER: After ordering the menu appears in the user info page (and right after placing order).
+### EP-03: ORDER: After ordering the menu it appears in the user info page (and right after placing order).
    - Name
    - Status (delivering | delivered)
    - ETA (TA for already delivered orders)
@@ -57,7 +57,7 @@ App that delivers food by drones. Menu can be ordered from a list of closeby res
 - [ ] Order page should be updates automatically every 5 seconds.
 - [ ] Application should keep last visited page open when user goes back to it.
 - [ ] All images are square and Base64 (no html prefix)
-- [ ] Pixel 7 API 31
+- [x] Pixel 7 API 31
 
 ### Client-Server sequence
 [![client-server sequence diagram](https://mermaid.ink/img/pako:eNp9UT1PwzAQ_SunWxhIq6ZJm9ZDByhIHbpQJpTFjY_UamwH20ENUf47TgNIDHDT3bv3Ifs6LIwgZOjorSFd0Fby0nKVawh1X0nSfrLZ3B7IvpNl8Cit83A0xkegiQQcdtuROzImgTwZZQyeT2QJWtNAaf4y3N0oKHhVSV0C10Ba1Ebq4D5obxyo9t-IJ3K10Y7gyIszcAf-SxdS7aDECBVZxaUIj-wGnxwDR1GOLLSC23OO0YgXFXduwLsxL8eTFPSgat_uSR3JujtzGfbeNjRQ-lz3IYA33hxaXSAbFhFa05QnZK-8cmFqasH997_-oDXXL8b8mpF1eEG2nE_XWbZaJkkcZ8tssYqwRRYnyTSdrdNFmqSLbJbE8z7Cj6tDHCEJ6Y3dj6e8XrT_BHs2l2E?type=png)](https://mermaid.live/edit#pako:eNp9UT1PwzAQ_SunWxhIq6ZJm9ZDByhIHbpQJpTFjY_UamwH20ENUf47TgNIDHDT3bv3Ifs6LIwgZOjorSFd0Fby0nKVawh1X0nSfrLZ3B7IvpNl8Cit83A0xkegiQQcdtuROzImgTwZZQyeT2QJWtNAaf4y3N0oKHhVSV0C10Ba1Ebq4D5obxyo9t-IJ3K10Y7gyIszcAf-SxdS7aDECBVZxaUIj-wGnxwDR1GOLLSC23OO0YgXFXduwLsxL8eTFPSgat_uSR3JujtzGfbeNjRQ-lz3IYA33hxaXSAbFhFa05QnZK-8cmFqasH997_-oDXXL8b8mpF1eEG2nE_XWbZaJkkcZ8tssYqwRRYnyTSdrdNFmqSLbJbE8z7Cj6tDHCEJ6Y3dj6e8XrT_B1Hs2l2E)
