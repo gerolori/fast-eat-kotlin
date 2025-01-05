@@ -12,7 +12,7 @@
         android:theme="@style/Theme.MangiaEBasta"
         >
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.mangiaebasta.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MangiaEBasta">
             <intent-filter>
