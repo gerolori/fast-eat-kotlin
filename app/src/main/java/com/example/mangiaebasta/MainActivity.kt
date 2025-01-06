@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mangiaebasta.ui.theme.MangiaEBastaTheme
-import com.example.mangiaebasta.ui.theme.navbar.bottomNavigationBar
+import com.example.mangiaebasta.ui.theme.navbar.BottomNavigationBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +21,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             MangiaEBastaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    greeting(
+                    Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding),
                     )
-                    bottomNavigationBar()
+                    BottomNavigationBar()
                 }
             }
         }
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun greeting(
+fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
 ) {
@@ -45,8 +45,8 @@ fun greeting(
 
 @Preview(showBackground = true)
 @Composable
-fun greetingPreview() {
+fun GreetingPreview() {
     MangiaEBastaTheme {
-        greeting("Android")
+        Greeting("Android")
     }
 }

@@ -19,9 +19,10 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mangiaebasta.ui.theme.screens.MenuScreen
 import com.example.mangiaebasta.ui.theme.screens.ProfileScreen
 
+@Suppress("ktlint:standard:function-naming")
 @Preview
 @Composable
-fun bottomNavigationBar() {
+fun BottomNavigationBar() {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
