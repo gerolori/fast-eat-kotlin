@@ -76,6 +76,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.io.ktor.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json.v210)
+    // Navbar setup
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)
