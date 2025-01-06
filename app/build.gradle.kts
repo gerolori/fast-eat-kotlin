@@ -2,7 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    // Room setup
     id("com.google.devtools.ksp")
+    // Ktor setup
+    id("kotlinx-serialization")
 }
 
 android {
@@ -51,6 +54,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    // Room setup
     implementation(libs.androidx.room.runtime)
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation(libs.androidx.room.ktx)
@@ -62,6 +66,16 @@ dependencies {
     implementation(libs.androidx.room.guava)
     // optional - Paging 3 Integration
     implementation(libs.androidx.room.paging)
+    // Ktor setup
+    // Core
+    implementation(libs.ktor.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    // Logging
+    implementation(libs.ktor.client.logging)
+    // JSON Serialization
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.io.ktor.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json.v210)
     testImplementation(libs.junit)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)
