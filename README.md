@@ -55,8 +55,8 @@ App that delivers food by drones. Menu can be ordered from a list of closeby res
 ## Technical details
 - [x] First app launch asks for SID and stores it locally to use in every server call.
 - [ ] Order page should be updates automatically every 5 seconds.
-- [ ] Application should keep last visited page open when user goes back to it.
-- [ ] All images are square and Base64 (no html prefix)
+- [x] Application should keep last visited page open when user goes back to it.
+- [x] All images are square and Base64 (no html prefix)
 - [x] Pixel 7 API 31
 
 ### Client-Server sequence
