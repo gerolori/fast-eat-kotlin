@@ -1,5 +1,6 @@
 package com.example.mangiaebasta.ui.theme.navbar
 
+import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -8,24 +9,34 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
+import com.example.mangiaebasta.core.SharedPreferencesUtils
+import com.example.mangiaebasta.core.SharedPreferencesUtils.getLastVisitedPage
 import com.example.mangiaebasta.ui.theme.screens.MenuScreen
 import com.example.mangiaebasta.ui.theme.screens.ProfileScreen
 
 @Suppress("ktlint:standard:function-naming")
-@Preview
 @Composable
-fun BottomNavigationBar() {
-    val navController = rememberNavController()
+fun BottomNavigationBar(
+    navController: NavHostController,
+    context: Context,
+) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+
+    LaunchedEffect(navController) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            SharedPreferencesUtils.saveLastVisitedPage(context, destination.route)
+        }
+    }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
@@ -58,18 +69,14 @@ fun BottomNavigationBar() {
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = Screens.Menu.route,
+            startDestination = if (getLastVisitedPage(context) == Screens.Menu.route) Screens.Menu.route else Screens.Profile.route,
             modifier = Modifier.padding(paddingValues = paddingValues),
         ) {
             composable(Screens.Menu.route) {
-                MenuScreen(
-                    navController,
-                )
+                MenuScreen(navController)
             }
             composable(Screens.Profile.route) {
-                ProfileScreen(
-                    navController,
-                )
+                ProfileScreen(navController)
             }
         }
     }

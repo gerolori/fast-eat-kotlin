@@ -22,34 +22,37 @@ import androidx.navigation.NavController
 import com.example.mangiaebasta.ui.theme.MangiaEBastaTheme
 import com.example.roomexample.R
 
+@Suppress("ktlint:standard:function-naming")
 @Composable
-fun ProfileScreen(navController: NavController) { //NOSONAR
+fun ProfileScreen(navController: NavController) { // NOSONAR
     MangiaEBastaTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
+            color = MaterialTheme.colorScheme.background,
         ) {
             Column(
                 modifier = Modifier.fillMaxSize().padding(15.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            )  {
+                verticalArrangement = Arrangement.Center,
+            ) {
                 Box(
-                    modifier = Modifier.fillMaxWidth()
-                        .height(200.dp)
-                        .padding(horizontal = 15.dp, vertical = 10.dp)
-                        .clip(MaterialTheme.shapes.large)
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .height(200.dp)
+                            .padding(horizontal = 15.dp, vertical = 10.dp)
+                            .clip(MaterialTheme.shapes.large),
                 ) {
                     Image(
                         painter = painterResource(R.drawable.ic_launcher_background),
                         contentDescription = "profile_screen_bg",
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
                     )
                 }
                 Text(
                     "Profile Screen",
                     style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.padding(vertical = 20.dp)
+                    modifier = Modifier.padding(vertical = 20.dp),
                 )
             }
         }
