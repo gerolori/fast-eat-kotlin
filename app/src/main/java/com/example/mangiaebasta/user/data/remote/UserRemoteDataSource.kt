@@ -3,6 +3,7 @@ package com.example.mangiaebasta.user.data.remote
 import android.util.Log
 import com.example.mangiaebasta.core.Constants
 import com.example.mangiaebasta.core.domain.model.ResponseError
+import com.example.mangiaebasta.user.domain.model.UpdateUserRequest
 import com.example.mangiaebasta.user.domain.model.UserInfoResponse
 import com.example.mangiaebasta.user.domain.model.UserResponse
 import io.ktor.client.HttpClient
@@ -12,7 +13,10 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.post
+import io.ktor.client.request.put
+import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.CoroutineDispatcher
@@ -49,6 +53,32 @@ class UserRemoteDataSource(
                 }
             } catch (e: Exception) {
                 Log.e("UserNetworkDataSource", "Error getting user info", e)
+                null
+            }
+        }
+
+    suspend fun updateUserInfo(
+        uid: Int,
+        updateUserRequest: UpdateUserRequest,
+    ): UserInfoResponse? =
+        withContext(ioDispatcher) {
+            try {
+                val urlString = "${Constants.BASE_URL}/user/$uid"
+                val response =
+                    client.put(urlString) {
+                        header("Authorization", "Bearer ${updateUserRequest.sid}")
+                        contentType(ContentType.Application.Json)
+                        setBody(updateUserRequest)
+                    }
+                if (response.status != HttpStatusCode.OK) {
+                    val error: ResponseError = response.body()
+                    Log.d("UserNetworkDataSource", error.message)
+                    null
+                } else {
+                    response.body<UserInfoResponse>()
+                }
+            } catch (e: Exception) {
+                Log.e("UserNetworkDataSource", "Error updating user info", e)
                 null
             }
         }
