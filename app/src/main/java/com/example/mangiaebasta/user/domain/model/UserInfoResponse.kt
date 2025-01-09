@@ -12,6 +12,6 @@ data class UserInfoResponse(
     val cardExpireYear: Int,
     val cardCVV: String,
     val uid: Int,
-    val lastOid: Int,
-    val orderStatus: String,
+    val lastOid: Int?,
+    val orderStatus: String?,
 )

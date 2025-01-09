@@ -1,7 +1,9 @@
 package com.example.mangiaebasta.user.data.remote
 
+import android.content.Context
 import android.util.Log
 import com.example.mangiaebasta.core.Constants
+import com.example.mangiaebasta.core.SharedPreferencesUtils
 import com.example.mangiaebasta.core.domain.model.ResponseError
 import com.example.mangiaebasta.user.domain.model.UpdateUserRequest
 import com.example.mangiaebasta.user.domain.model.UserInfoResponse
@@ -24,6 +26,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
 class UserRemoteDataSource(
+    private val context: Context,
     private val ioDispatcher: CoroutineDispatcher,
 ) {
     private val client =
@@ -32,17 +35,15 @@ class UserRemoteDataSource(
                 json(Json { ignoreUnknownKeys = true })
             }
         }
+    private val sid = SharedPreferencesUtils.getStoredSID(context)
+    private val uid = SharedPreferencesUtils.getStoredUID(context)
 
-    suspend fun getUserInfo(
-        sid: String,
-        uid: Int,
-    ): UserInfoResponse? =
+    suspend fun getUserInfo(): UserInfoResponse? =
         withContext(ioDispatcher) {
             try {
-                val urlString = "${Constants.BASE_URL}/user/$uid"
+                val urlString = "${Constants.BASE_URL}/user/$uid?sid=$sid"
                 val response =
                     client.get(urlString) {
-                        header("Authorization", "Bearer $sid")
                     }
                 if (response.status.value != 200) {
                     val error: ResponseError = response.body()
