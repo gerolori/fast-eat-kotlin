@@ -20,6 +20,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.mangiaebasta.core.SharedPreferencesUtils
 import com.example.mangiaebasta.core.SharedPreferencesUtils.getLastVisitedPage
 import com.example.mangiaebasta.ui.theme.screens.MenuScreen
+import com.example.mangiaebasta.ui.theme.screens.OrdersScreen
 import com.example.mangiaebasta.ui.theme.screens.ProfileScreen
 import com.example.mangiaebasta.user.presentation.UserViewModel
 
@@ -72,7 +73,12 @@ fun BottomNavigationBar(
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = if (getLastVisitedPage(context) == Screens.Menu.route) Screens.Menu.route else Screens.Profile.route,
+            startDestination =
+                when (getLastVisitedPage(context)) {
+                    Screens.Menu.route -> Screens.Menu.route
+                    Screens.Orders.route -> Screens.Orders.route
+                    else -> Screens.Profile.route
+                },
             modifier = Modifier.padding(paddingValues = paddingValues),
         ) {
             composable(Screens.Menu.route) {
@@ -80,6 +86,9 @@ fun BottomNavigationBar(
             }
             composable(Screens.Profile.route) {
                 ProfileScreen(navController, userUid, userViewModel)
+            }
+            composable(Screens.Orders.route) {
+                OrdersScreen(navController)
             }
         }
     }
