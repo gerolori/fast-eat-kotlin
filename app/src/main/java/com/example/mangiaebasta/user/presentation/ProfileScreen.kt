@@ -1,4 +1,4 @@
-package com.example.mangiaebasta.ui.theme.screens
+package com.example.mangiaebasta.user.presentation
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -32,10 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.mangiaebasta.ui.theme.MangiaEBastaTheme
+import com.example.mangiaebasta.core.theme.MangiaEBastaTheme
 import com.example.mangiaebasta.user.data.local.User
 import com.example.mangiaebasta.user.domain.model.UpdateUserRequest
-import com.example.mangiaebasta.user.presentation.UserViewModel
 
 @Suppress("ktlint:standard:function-naming")
 @Composable
@@ -296,4 +295,9 @@ fun UserField(
             )
         }
     }
+}
+
+@Suppress("ktlint:standard:function-naming")
+fun ProfileEditScreen() {
+    // TODO
 }

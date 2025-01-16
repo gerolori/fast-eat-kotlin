@@ -13,7 +13,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.roomexample"
+        applicationId = "com.example.mangiaebasta"
         minSdk = 34
         //noinspection OldTargetApi
         targetSdk = 34
@@ -80,6 +80,20 @@ dependencies {
     implementation(libs.maps.compose)
     // Navbar setup
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.runtime.livedata)
+    // Modal Bottom Sheet and icons
+    implementation(libs.androidxComposeMaterial3)
+    implementation(libs.androidxComposeMaterialIconsExtended)
+    implementation(libs.kotlinxCoroutinesPlayServices)
+    implementation(libs.play.services.location)
+    implementation(libs.datastore.preferences)
+    implementation(libs.datastore)
+    // optional - RxJava2 support
+    implementation(libs.androidx.datastore.preferences.rxjava2)
+    // optional - RxJava3 support
+    implementation(libs.androidx.datastore.preferences.rxjava3)
+    implementation(libs.gson)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     testImplementation(libs.junit)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)
