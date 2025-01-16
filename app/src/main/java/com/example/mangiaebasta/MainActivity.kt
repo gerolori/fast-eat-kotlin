@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.lifecycleScope
@@ -44,18 +45,31 @@ class MainActivity : ComponentActivity() {
                             context,
                             Database::class.java,
                             "user_database",
-                        ).build()
+                        ).fallbackToDestructiveMigration()
+                        .build()
 
                 val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
                 val userDao = userDatabase.userDao()
                 val userRepository = remember { UserRepository(userDao, context, ioDispatcher) }
+                val isSidRetrieved = remember { mutableStateOf(false) }
+
+                HandleSID(context, ioDispatcher) {
+                    isSidRetrieved.value = true
+                }
+
                 val navController = rememberNavController()
+                if (isSidRetrieved.value) {
+                    val userUid = SharedPreferencesUtils.getStoredUID(LocalContext.current) ?: 0
+                    UserViewModel(userRepository).initializeUser(userUid)
+                    RestoreLastVisitedPage(context, navController)
 
-                HandleSID(context, ioDispatcher)
-                val userUid = SharedPreferencesUtils.getStoredUID(LocalContext.current)?.toInt() ?: 0
-                RestoreLastVisitedPage(context, navController)
-
-                BottomNavigationBar(navController, context, userUid, UserViewModel(userRepository))
+                    BottomNavigationBar(
+                        navController,
+                        context,
+                        userUid,
+                        UserViewModel(userRepository),
+                    )
+                }
             }
         }
     }
@@ -64,19 +78,26 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun HandleSID(
         context: Context,
-        ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+        ioDispatcher: CoroutineDispatcher = Dispatchers.Main,
+        isSidRetrieved: () -> Unit,
     ) {
         LaunchedEffect(Unit) {
             if (SharedPreferencesUtils.getStoredSID(context) == null) {
                 lifecycleScope.launch(ioDispatcher) {
                     val userResponse = UserRemoteDataSource(context, ioDispatcher).requestSID()
                     if (userResponse != null) {
-                        SharedPreferencesUtils.storeAppPrefs(context, userResponse.sid, userResponse.uid)
+                        SharedPreferencesUtils.storeAppPrefs(
+                            context,
+                            userResponse.sid,
+                            userResponse.uid,
+                        )
                         Log.d("MainActivity", "First boot: SID and UID retrieved from server")
+                        isSidRetrieved()
                     }
                 }
             } else {
                 Log.d("MainActivity", "SID already stored in SharedPreferences")
+                isSidRetrieved()
             }
         }
     }

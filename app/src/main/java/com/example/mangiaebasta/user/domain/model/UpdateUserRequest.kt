@@ -11,5 +11,4 @@ data class UpdateUserRequest(
     val cardExpireMonth: Int,
     val cardExpireYear: Int,
     val cardCVV: String,
-    val sid: String,
 )
