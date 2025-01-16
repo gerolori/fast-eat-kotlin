@@ -21,12 +21,15 @@ import com.example.mangiaebasta.core.SharedPreferencesUtils
 import com.example.mangiaebasta.core.SharedPreferencesUtils.getLastVisitedPage
 import com.example.mangiaebasta.ui.theme.screens.MenuScreen
 import com.example.mangiaebasta.ui.theme.screens.ProfileScreen
+import com.example.mangiaebasta.user.presentation.UserViewModel
 
 @Suppress("ktlint:standard:function-naming")
 @Composable
 fun BottomNavigationBar(
     navController: NavHostController,
     context: Context,
+    userUid: Int,
+    userViewModel: UserViewModel,
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -76,7 +79,7 @@ fun BottomNavigationBar(
                 MenuScreen(navController)
             }
             composable(Screens.Profile.route) {
-                ProfileScreen(navController)
+                ProfileScreen(navController, userUid, userViewModel)
             }
         }
     }

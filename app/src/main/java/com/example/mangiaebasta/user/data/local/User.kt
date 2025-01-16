@@ -1,9 +1,11 @@
-package com.example.mangiaebasta.user.domain.model
+package com.example.mangiaebasta.user.data.local
 
-import kotlinx.serialization.Serializable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Serializable
-data class UserInfoResponse(
+@Entity(tableName = "user")
+data class User(
+    @PrimaryKey val uid: Int,
     val firstName: String?,
     val lastName: String?,
     val cardFullName: String?,
@@ -11,7 +13,6 @@ data class UserInfoResponse(
     val cardExpireMonth: Int?,
     val cardExpireYear: Int?,
     val cardCVV: String?,
-    val uid: Int,
     val lastOid: Int?,
     val orderStatus: String?,
 )
