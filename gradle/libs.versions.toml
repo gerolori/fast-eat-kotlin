@@ -21,6 +21,9 @@ ktorSerializationKotlinxJsonVersion = "3.0.2"
 # NAVIGATION SETUP
 navigationCompose = "2.8.5"
 runtimeLivedata = "1.7.6"
+# material3
+androidxComposeMaterial3 = "1.4.0-alpha02"
+androidxComposeMaterialIconsExtended = "1.4.0-alpha02"
 
 [libraries]
 android = { module = "com.mapbox.maps:android", version.ref = "android" }
@@ -56,6 +59,9 @@ ktor-serialization-kotlinx-json-v210 = { module = "io.ktor:ktor-serialization-ko
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 maps-compose = { module = "com.mapbox.extension:maps-compose", version.ref = "mapsCompose" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
+# material 3
+androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxComposeMaterial3" }
+androidxComposeMaterialIconsExtended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidxComposeMaterialIconsExtended" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

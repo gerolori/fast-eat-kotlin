@@ -81,6 +81,9 @@ dependencies {
     // Navbar setup
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.runtime.livedata)
+    // Modal Bottom Sheet and icons
+    implementation(libs.androidxComposeMaterial3)
+    implementation(libs.androidxComposeMaterialIconsExtended)
     testImplementation(libs.junit)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)

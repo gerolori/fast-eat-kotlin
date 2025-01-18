@@ -65,15 +65,15 @@ class MenuRepository(
         return menuList
     }
 
-    suspend fun getMenuLongDescription(mid: Int): String {
+    suspend fun getMenuLongDescription(mid: Int): Menu? {
         val menu = menuDao.getMenu(mid)
         if (menu?.longDescription == null) {
-            val longDescription = remoteDataSource.getMenuDetailed(mid, menu!!.lat, menu.lng)?.longDescription
+            val longDescription =
+                remoteDataSource.getMenuDetailed(mid, menu!!.lat, menu.lng)?.longDescription
             if (longDescription != null) {
                 menuDao.updateMenuLongDescription(mid, longDescription)
             }
         }
-        val menuDb = menuDao.getMenu(mid)
-        return menuDb?.longDescription ?: throw IllegalStateException("Menu long description is null")
+        return menuDao.getMenu(mid)
     }
 }

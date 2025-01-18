@@ -23,4 +23,10 @@ class MenuViewModel(
             _menuList.value = menus
         }
     }
+
+    fun getMenuById(mid: Int) {
+        viewModelScope.launch {
+            repository.getMenuLongDescription(mid)
+        }
+    }
 }
