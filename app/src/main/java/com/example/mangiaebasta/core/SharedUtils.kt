@@ -3,8 +3,11 @@ package com.example.mangiaebasta.core
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 
-object SharedPreferencesUtils {
+object SharedUtils {
     private const val PREFS_NAME = "app_prefs"
     private const val LAST_VISITED_PAGE_KEY = "last_visited_page"
 
@@ -44,4 +47,13 @@ object SharedPreferencesUtils {
         val sharedPreferences: SharedPreferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         return sharedPreferences.getString(LAST_VISITED_PAGE_KEY, null)
     }
+
+    fun addSidToJson(
+        json: JsonObject,
+        context: Context,
+    ): JsonObject =
+        buildJsonObject {
+            json.forEach { (key, value) -> put(key, value) }
+            put("sid", getStoredSID(context) ?: "")
+        }
 }

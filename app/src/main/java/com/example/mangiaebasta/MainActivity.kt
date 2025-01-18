@@ -16,8 +16,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
-import com.example.mangiaebasta.core.SharedPreferencesUtils
+import com.example.mangiaebasta.core.SharedUtils
 import com.example.mangiaebasta.core.data.Database
+import com.example.mangiaebasta.menu.data.repository.MenuRepository
+import com.example.mangiaebasta.menu.presentation.MenuViewModel
 import com.example.mangiaebasta.ui.theme.MangiaEBastaTheme
 import com.example.mangiaebasta.ui.theme.navbar.BottomNavigationBar
 import com.example.mangiaebasta.user.data.remote.UserRemoteDataSource
@@ -47,10 +49,21 @@ class MainActivity : ComponentActivity() {
                             "user_database",
                         ).fallbackToDestructiveMigration()
                         .build()
+                val menuDatabase =
+                    Room
+                        .databaseBuilder(
+                            context,
+                            Database::class.java,
+                            "menu_database",
+                        ).fallbackToDestructiveMigration()
+                        .build()
 
                 val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
                 val userDao = userDatabase.userDao()
+                val menuDao = menuDatabase.menuDao()
+//                TODO: implement viewmodel factory for both user and menu viewmodels
                 val userRepository = remember { UserRepository(userDao, context, ioDispatcher) }
+                val menuRepository = remember { MenuRepository(menuDao, context, ioDispatcher) }
                 val isSidRetrieved = remember { mutableStateOf(false) }
 
                 HandleSID(context, ioDispatcher) {
@@ -59,7 +72,7 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
                 if (isSidRetrieved.value) {
-                    val userUid = SharedPreferencesUtils.getStoredUID(LocalContext.current) ?: 0
+                    val userUid = SharedUtils.getStoredUID(LocalContext.current) ?: 0
                     UserViewModel(userRepository).initializeUser(userUid)
                     RestoreLastVisitedPage(context, navController)
 
@@ -68,6 +81,7 @@ class MainActivity : ComponentActivity() {
                         context,
                         userUid,
                         UserViewModel(userRepository),
+                        MenuViewModel(menuRepository),
                     )
                 }
             }
@@ -82,11 +96,11 @@ class MainActivity : ComponentActivity() {
         isSidRetrieved: () -> Unit,
     ) {
         LaunchedEffect(Unit) {
-            if (SharedPreferencesUtils.getStoredSID(context) == null) {
+            if (SharedUtils.getStoredSID(context) == null) {
                 lifecycleScope.launch(ioDispatcher) {
                     val userResponse = UserRemoteDataSource(context, ioDispatcher).requestSID()
                     if (userResponse != null) {
-                        SharedPreferencesUtils.storeAppPrefs(
+                        SharedUtils.storeAppPrefs(
                             context,
                             userResponse.sid,
                             userResponse.uid,
@@ -110,7 +124,7 @@ class MainActivity : ComponentActivity() {
     ) {
         LaunchedEffect(Unit) {
             lifecycleScope.launch {
-                val lastVisitedPage = SharedPreferencesUtils.getLastVisitedPage(context)
+                val lastVisitedPage = SharedUtils.getLastVisitedPage(context)
                 if (lastVisitedPage != null) {
                     navController.navigate(lastVisitedPage)
                 }

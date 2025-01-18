@@ -13,7 +13,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.roomexample"
+        applicationId = "com.example.mangiaebasta"
         minSdk = 34
         //noinspection OldTargetApi
         targetSdk = 34
@@ -80,6 +80,7 @@ dependencies {
     implementation(libs.maps.compose)
     // Navbar setup
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)

@@ -3,7 +3,7 @@ package com.example.mangiaebasta.user.data.remote
 import android.content.Context
 import android.util.Log
 import com.example.mangiaebasta.core.Constants
-import com.example.mangiaebasta.core.SharedPreferencesUtils
+import com.example.mangiaebasta.core.SharedUtils
 import com.example.mangiaebasta.core.domain.model.ResponseError
 import com.example.mangiaebasta.user.domain.model.UpdateUserRequest
 import com.example.mangiaebasta.user.domain.model.UserInfoResponse
@@ -23,8 +23,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
 
 class UserRemoteDataSource(
     private val context: Context,
@@ -36,12 +34,12 @@ class UserRemoteDataSource(
                 json(Json { ignoreUnknownKeys = true })
             }
         }
-    private var sid = SharedPreferencesUtils.getStoredSID(context)
-    private var uid = SharedPreferencesUtils.getStoredUID(context)
+    private var sid = SharedUtils.getStoredSID(context)
+    private var uid = SharedUtils.getStoredUID(context)
 
     private fun updateCredentials() {
-        sid = SharedPreferencesUtils.getStoredSID(context)
-        uid = SharedPreferencesUtils.getStoredUID(context)
+        sid = SharedUtils.getStoredSID(context)
+        uid = SharedUtils.getStoredUID(context)
     }
 
     suspend fun getUserInfo(): UserInfoResponse? =
@@ -69,20 +67,15 @@ class UserRemoteDataSource(
         uid: Int,
         updateUserRequest: UpdateUserRequest,
     ) = withContext(ioDispatcher) {
-        if (sid == null) updateCredentials()
         try {
             val json = Json.encodeToJsonElement(UpdateUserRequest.serializer(), updateUserRequest) as JsonObject
-            val jsonObjectWithSid =
-                buildJsonObject {
-                    json.forEach { (key, value) -> put(key, value) }
-                    put("sid", sid ?: "")
-                }
+            val body = SharedUtils.addSidToJson(json, context)
 
             val urlString = "${Constants.BASE_URL}/user/$uid"
             val response =
                 client.put(urlString) {
                     contentType(ContentType.Application.Json)
-                    setBody(jsonObjectWithSid)
+                    setBody(body)
                 }
 
             if (response.status.value != 204) {

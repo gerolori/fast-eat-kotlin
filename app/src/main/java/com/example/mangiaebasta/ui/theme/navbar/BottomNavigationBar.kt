@@ -17,8 +17,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.mangiaebasta.core.SharedPreferencesUtils
-import com.example.mangiaebasta.core.SharedPreferencesUtils.getLastVisitedPage
+import com.example.mangiaebasta.core.SharedUtils
+import com.example.mangiaebasta.core.SharedUtils.getLastVisitedPage
+import com.example.mangiaebasta.menu.presentation.MenuViewModel
 import com.example.mangiaebasta.ui.theme.screens.MenuScreen
 import com.example.mangiaebasta.ui.theme.screens.OrdersScreen
 import com.example.mangiaebasta.ui.theme.screens.ProfileScreen
@@ -31,13 +32,14 @@ fun BottomNavigationBar(
     context: Context,
     userUid: Int,
     userViewModel: UserViewModel,
+    menuViewModel: MenuViewModel,
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
     LaunchedEffect(navController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            SharedPreferencesUtils.saveLastVisitedPage(context, destination.route)
+            SharedUtils.saveLastVisitedPage(context, destination.route)
         }
     }
 
@@ -82,7 +84,7 @@ fun BottomNavigationBar(
             modifier = Modifier.padding(paddingValues = paddingValues),
         ) {
             composable(Screens.Menu.route) {
-                MenuScreen(navController)
+                MenuScreen(navController, menuViewModel)
             }
             composable(Screens.Profile.route) {
                 ProfileScreen(navController, userUid, userViewModel)

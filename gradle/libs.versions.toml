@@ -20,6 +20,7 @@ ktorClientLogging = "3.0.2"
 ktorSerializationKotlinxJsonVersion = "3.0.2"
 # NAVIGATION SETUP
 navigationCompose = "2.8.5"
+runtimeLivedata = "1.7.6"
 
 [libraries]
 android = { module = "com.mapbox.maps:android", version.ref = "android" }
@@ -54,6 +55,7 @@ ktor-ktor-client-core = { module = "io.ktor:ktor-client-core" }
 ktor-serialization-kotlinx-json-v210 = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJsonVersion" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 maps-compose = { module = "com.mapbox.extension:maps-compose", version.ref = "mapsCompose" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
