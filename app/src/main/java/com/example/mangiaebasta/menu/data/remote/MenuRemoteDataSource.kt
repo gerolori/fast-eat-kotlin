@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.example.mangiaebasta.core.Constants
 import com.example.mangiaebasta.core.SharedUtils
+import com.example.mangiaebasta.menu.domain.model.BuyMenuRequest
+import com.example.mangiaebasta.menu.domain.model.BuyMenuResponse
 import com.example.mangiaebasta.menu.domain.model.ImageResponse
 import com.example.mangiaebasta.menu.domain.model.MenuDetailedResponse
 import com.example.mangiaebasta.menu.domain.model.MenuNearRequest
@@ -13,9 +15,15 @@ import io.ktor.client.call.body
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
 
 class MenuRemoteDataSource(
     private val context: Context,
@@ -72,4 +80,24 @@ class MenuRemoteDataSource(
             response.body<MenuDetailedResponse>()
         }
     }
+
+    suspend fun buyMenu(request: BuyMenuRequest): BuyMenuResponse? =
+        withContext(ioDispatcher) {
+            val json = Json.encodeToJsonElement(BuyMenuRequest.serializer(), request) as JsonObject
+            val body = SharedUtils.addSidToJson(json, context)
+
+            val url = "${Constants.BASE_URL}/menu/${request.mid}/buy"
+            val response =
+                client.post(url) {
+                    contentType(ContentType.Application.Json)
+                    setBody(body)
+                }
+
+            if (response.status.value != 200) {
+                Log.e("MenuRemoteDataSource - buyMenu", "Error: ${response.status.value}")
+                null
+            } else {
+                response.body<BuyMenuResponse>()
+            }
+        }
 }

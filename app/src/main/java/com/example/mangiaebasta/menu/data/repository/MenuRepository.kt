@@ -1,9 +1,13 @@
 package com.example.mangiaebasta.menu.data.repository
 
 import android.content.Context
+import android.util.Log
 import com.example.mangiaebasta.menu.data.local.Menu
 import com.example.mangiaebasta.menu.data.local.MenuDao
 import com.example.mangiaebasta.menu.data.remote.MenuRemoteDataSource
+import com.example.mangiaebasta.menu.domain.model.BuyMenuRequest
+import com.example.mangiaebasta.menu.domain.model.BuyMenuResponse
+import com.example.mangiaebasta.menu.domain.model.Location
 import com.example.mangiaebasta.menu.domain.model.MenuNearRequest
 import kotlinx.coroutines.CoroutineDispatcher
 
@@ -75,5 +79,17 @@ class MenuRepository(
             }
         }
         return menuDao.getMenu(mid)
+    }
+
+    suspend fun buyMenu(
+        mid: Int,
+        lat: Double,
+        lng: Double,
+    ): BuyMenuResponse? {
+        val request = BuyMenuRequest(mid, Location(lat, lng))
+        Log.d("MenuRepository - buyMenu", "Request: $request")
+        val response = remoteDataSource.buyMenu(request)
+        Log.d("MenuRepository - buyMenu", "Response: $response")
+        return response
     }
 }

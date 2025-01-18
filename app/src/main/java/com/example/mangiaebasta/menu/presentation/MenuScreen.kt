@@ -129,7 +129,7 @@ fun MenuScreen(
                 MenuDetailModal(
                     menu = menu,
                     onDismiss = { selectedMenu = null },
-                    onBuyClick = { /* Handle buy action */ },
+                    onBuyClick = { menuViewModel.buyMenu(menu.mid, longitude!!, latitude!!) },
                 )
             }
         }

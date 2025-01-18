@@ -57,4 +57,14 @@ class MenuViewModel(
             }
         }
     }
+
+    fun buyMenu(
+        mid: Int,
+        lng: Double,
+        lat: Double,
+    ) {
+        viewModelScope.launch {
+            repository.buyMenu(mid, lat, lng)
+        }
+    }
 }
