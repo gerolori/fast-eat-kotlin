@@ -24,6 +24,8 @@ runtimeLivedata = "1.7.6"
 # material3
 androidxComposeMaterial3 = "1.4.0-alpha02"
 androidxComposeMaterialIconsExtended = "1.4.0-alpha02"
+playServicesLocation = "21.3.0"
+kotlinxCoroutinesPlayServices = "1.9.0"
 
 [libraries]
 android = { module = "com.mapbox.maps:android", version.ref = "android" }
@@ -62,6 +64,8 @@ androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtim
 # material 3
 androidxComposeMaterial3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxComposeMaterial3" }
 androidxComposeMaterialIconsExtended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidxComposeMaterialIconsExtended" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+kotlinxCoroutinesPlayServices = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutinesPlayServices" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

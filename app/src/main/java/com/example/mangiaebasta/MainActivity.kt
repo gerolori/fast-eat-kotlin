@@ -25,14 +25,20 @@ import com.example.mangiaebasta.menu.presentation.MenuViewModel
 import com.example.mangiaebasta.user.data.remote.UserRemoteDataSource
 import com.example.mangiaebasta.user.data.repository.UserRepository
 import com.example.mangiaebasta.user.presentation.UserViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1)
@@ -81,7 +87,7 @@ class MainActivity : ComponentActivity() {
                         context,
                         userUid,
                         UserViewModel(userRepository),
-                        MenuViewModel(menuRepository),
+                        MenuViewModel(menuRepository, fusedLocationClient),
                     )
                 }
             }

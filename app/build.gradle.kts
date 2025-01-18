@@ -84,6 +84,8 @@ dependencies {
     // Modal Bottom Sheet and icons
     implementation(libs.androidxComposeMaterial3)
     implementation(libs.androidxComposeMaterialIconsExtended)
+    implementation(libs.kotlinxCoroutinesPlayServices)
+    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)

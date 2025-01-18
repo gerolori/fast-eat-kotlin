@@ -1,7 +1,6 @@
 package com.example.mangiaebasta.menu.presentation
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -53,20 +52,28 @@ import com.example.mangiaebasta.core.theme.MangiaEBastaTheme
 import com.example.mangiaebasta.menu.data.local.Menu
 
 @Suppress("ktlint:standard:function-naming")
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
+@OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalMaterial3ExpressiveApi::class,
+)
 @Composable
 fun MenuScreen(
     navController: NavController,
     menuViewModel: MenuViewModel = viewModel(),
 ) {
     val menuList by menuViewModel.menuList.observeAsState(emptyList())
-    val lat = 41.8992
-    val lng = 12.4731
+    val latitude by menuViewModel.latitude.observeAsState()
+    val longitude by menuViewModel.longitude.observeAsState()
     var selectedMenu by remember { mutableStateOf<Menu?>(null) }
 
-    LaunchedEffect(lat, lng) {
-        Log.d("MenuScreen", "Getting menu list")
-        menuViewModel.getMenuList(lat, lng)
+    LaunchedEffect(Unit) {
+        menuViewModel.updateLocation()
+    }
+
+    LaunchedEffect(latitude, longitude) {
+        if (latitude != null && longitude != null) {
+            menuViewModel.getMenuList(latitude!!, longitude!!)
+        }
     }
 
     MangiaEBastaTheme {
@@ -250,6 +257,7 @@ fun MenuDetailModal(
                 Text(
                     text = it,
                     style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.align(Alignment.Start).padding(horizontal = 30.dp),
                 )
             }
         }
