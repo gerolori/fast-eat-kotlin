@@ -1,4 +1,4 @@
-package com.example.mangiaebasta.ui.theme.screens
+package com.example.mangiaebasta.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.mangiaebasta.ui.theme.MangiaEBastaTheme
+import com.example.mangiaebasta.core.theme.MangiaEBastaTheme
 
 @Suppress("ktlint:standard:function-naming")
 @Composable

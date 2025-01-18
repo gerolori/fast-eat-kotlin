@@ -1,4 +1,4 @@
-package com.example.mangiaebasta.ui.theme.navbar
+package com.example.mangiaebasta.core.navbar
 
 sealed class Screens(
     val route: String,

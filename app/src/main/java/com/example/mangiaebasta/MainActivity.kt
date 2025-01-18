@@ -18,10 +18,10 @@ import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import com.example.mangiaebasta.core.SharedUtils
 import com.example.mangiaebasta.core.data.Database
+import com.example.mangiaebasta.core.navbar.BottomNavigationBar
+import com.example.mangiaebasta.core.theme.MangiaEBastaTheme
 import com.example.mangiaebasta.menu.data.repository.MenuRepository
 import com.example.mangiaebasta.menu.presentation.MenuViewModel
-import com.example.mangiaebasta.ui.theme.MangiaEBastaTheme
-import com.example.mangiaebasta.ui.theme.navbar.BottomNavigationBar
 import com.example.mangiaebasta.user.data.remote.UserRemoteDataSource
 import com.example.mangiaebasta.user.data.repository.UserRepository
 import com.example.mangiaebasta.user.presentation.UserViewModel

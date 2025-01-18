@@ -1,4 +1,4 @@
-package com.example.mangiaebasta.ui.theme.screens
+package com.example.mangiaebasta.menu.presentation
 
 import android.graphics.Bitmap
 import android.util.Log
@@ -18,14 +18,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.items // NOSONAR
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.getValue // NOSONAR
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,9 +39,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.mangiaebasta.core.ImageUtils
-import com.example.mangiaebasta.menu.presentation.MenuViewModel
-import com.example.mangiaebasta.ui.theme.MangiaEBastaTheme
-import com.example.mangiaebasta.ui.theme.OrangeGrey80
+import com.example.mangiaebasta.core.theme.MangiaEBastaTheme
+import com.example.mangiaebasta.core.theme.OrangeGrey80
 
 @Suppress("ktlint:standard:function-naming")
 @Composable

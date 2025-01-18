@@ -1,4 +1,4 @@
-package com.example.mangiaebasta.ui.theme.navbar
+package com.example.mangiaebasta.core.navbar
 
 import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,10 +19,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.mangiaebasta.core.SharedUtils
 import com.example.mangiaebasta.core.SharedUtils.getLastVisitedPage
+import com.example.mangiaebasta.menu.presentation.MenuScreen
 import com.example.mangiaebasta.menu.presentation.MenuViewModel
-import com.example.mangiaebasta.ui.theme.screens.MenuScreen
-import com.example.mangiaebasta.ui.theme.screens.OrdersScreen
-import com.example.mangiaebasta.ui.theme.screens.ProfileScreen
+import com.example.mangiaebasta.ui.OrdersScreen
+import com.example.mangiaebasta.user.presentation.ProfileScreen
 import com.example.mangiaebasta.user.presentation.UserViewModel
 
 @Suppress("ktlint:standard:function-naming")

@@ -1,4 +1,4 @@
-package com.example.mangiaebasta.ui.theme.navbar
+package com.example.mangiaebasta.core.navbar
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
