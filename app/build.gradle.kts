@@ -86,6 +86,10 @@ dependencies {
     implementation(libs.androidxComposeMaterialIconsExtended)
     implementation(libs.kotlinxCoroutinesPlayServices)
     implementation(libs.play.services.location)
+    implementation(libs.datastore.preferences)
+    implementation(libs.datastore)
+    implementation(libs.gson)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     testImplementation(libs.junit)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)
