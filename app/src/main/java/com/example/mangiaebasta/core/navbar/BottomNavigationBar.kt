@@ -90,7 +90,7 @@ fun BottomNavigationBar(
                 ProfileScreen(navController, userUid, userViewModel)
             }
             composable(Screens.Orders.route) {
-                OrdersScreen(navController)
+                OrdersScreen()
             }
         }
     }
