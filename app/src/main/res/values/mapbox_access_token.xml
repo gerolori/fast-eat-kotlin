@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Mapbox access token is now generated from local.properties during build -->
+    <!-- See build.gradle.kts for configuration -->
+    <!-- Add your token to local.properties: MAPBOX_ACCESS_TOKEN=your_token_here -->
+</resources>

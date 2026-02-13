@@ -1,0 +1,18 @@
+## This is an example file showing what should be in local.properties
+# Copy this file to local.properties and fill in your actual values
+# DO NOT commit local.properties to version control!
+
+# Location of the Android SDK (automatically set by Android Studio)
+sdk.dir=
+
+# ===== API Configuration =====
+# The base URL for the API endpoints
+API_BASE_URL=
+
+# ===== Mapbox Configuration =====
+# Get your Mapbox access token from: https://account.mapbox.com/access-tokens/
+MAPBOX_ACCESS_TOKEN=
+
+# Your custom Mapbox style URL (format: mapbox://styles/username/style_id)
+MAPBOX_STYLE_URL=
+
