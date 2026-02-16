@@ -1,10 +1,10 @@
-# Mangia e Basta - Drone Food Delivery Platform
+# fast eat - Drone Food Delivery Platform
 
 An Android application built with Kotlin and Jetpack Compose that demonstrates modern Android development practices. The app implements a food delivery platform where users can browse restaurants, place orders, and track real-time drone deliveries on an interactive map.
 
 ## Project Overview
 
-Mangia e Basta is a full-featured food delivery application built to showcase practical Android development skills. Users can discover nearby restaurants, manage profiles with payment information, and track orders in real-time.
+fast eat is a full-featured food delivery application built to showcase practical Android development skills. Users can discover nearby restaurants, manage profiles with payment information, and track orders in real-time.
 
 ### Key Features
 - Browse and filter menus from nearby restaurants with delivery times
