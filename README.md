@@ -124,6 +124,7 @@ app/src/main/java/com/example/mangiaebasta/
 ### Installation
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/gerolori/fast-eat-kotlin.git
    cd fast-eat-kotlin
@@ -132,6 +133,7 @@ app/src/main/java/com/example/mangiaebasta/
 2. Configure Local Properties
    - Copy `local.properties.example` to `local.properties`
    - Add your API credentials:
+
      ```properties
      API_BASE_URL=http://localhost:8080/api/v1
      GOOGLE_MAPS_API_KEY=your_google_maps_api_key
@@ -190,6 +192,7 @@ app/src/main/java/com/example/mangiaebasta/
 **User Story:** As a user, I want to browse nearby restaurant menus and place orders so I can get food delivered by drone.
 
 **Acceptance Criteria:**
+
 - Browse available menus from nearby restaurants
 - Filter by flight distance and ETA
 - View detailed menu information with high-resolution images
@@ -198,6 +201,7 @@ app/src/main/java/com/example/mangiaebasta/
 - Technologies: Compose UI, Room Database, Retrofit networking
 
 **Technical Notes:**
+
 - Menus fetched from `/menus` endpoint with GPS coordinates
 - Images stored as Base64 strings in Room Database (ImagesDao)
 - Order validation checks for pending orders via `/orders/{id}` status
@@ -208,12 +212,14 @@ app/src/main/java/com/example/mangiaebasta/
 **User Story:** As a user, I want to manage my profile and payment information so I can complete orders efficiently.
 
 **Acceptance Criteria:**
+
 - Edit personal information (name, surname - max 15 chars)
 - Manage credit card details with validation (max 31 chars for card number)
 - View order history with last order details
 - Technologies: DataStore, form validation, secure storage
 
 **Technical Notes:**
+
 - Profile data persisted in SharedPreferences/DataStore
 - Form validation using Compose state management
 - Card number validation (Luhn algorithm optional)
@@ -224,6 +230,7 @@ app/src/main/java/com/example/mangiaebasta/
 **User Story:** As a user, I want to track my order in real-time so I know when my food will arrive.
 
 **Acceptance Criteria:**
+
 - Live order status (pending → in progress → delivered)
 - Interactive map showing restaurant departure point, drone position, and delivery destination
 - Real-time ETA updates
@@ -232,6 +239,7 @@ app/src/main/java/com/example/mangiaebasta/
 - Technologies: Google Maps SDK, Coroutines, Location Services
 
 **Technical Notes:**
+
 - Order status polled via `/orders/{id}` endpoint using Kotlin coroutines
 - Google Maps SDK displays drone position with custom markers
 - ETA calculated from drone speed and distance to destination
@@ -326,6 +334,7 @@ sequenceDiagram
 ## Code Quality and Best Practices
 
 The project follows SOLID principles:
+
 - Single Responsibility: Feature-based modular architecture
 - Open/Closed: Extension via composition and inheritance
 - Liskov Substitution: Interface-based dependencies
@@ -333,16 +342,19 @@ The project follows SOLID principles:
 - Dependency Inversion: Abstract layer dependencies
 
 Reactive programming approach:
+
 - Coroutines for async operations
 - StateFlow for reactive state management
 - Flow for data streams
 
 Material Design 3 implementation:
+
 - Consistent theming with custom colors
 - Adaptive typography
 - Modern component library
 
 Type safety:
+
 - Null-safe Kotlin with optional types
 - Sealed classes for error handling
 - Compile-time checked serialization
@@ -370,12 +382,14 @@ Type safety:
 ## Testing
 
 The project includes unit tests, integration tests, and UI tests:
+
 - Unit tests for data layer and utility functions
 - Integration tests for Room database operations
 - UI tests for Compose component interactions
 - Mock data fixtures for test isolation
 
 **Testing Stack:**
+
 - JUnit 4 for unit testing
 - Mockito for test mocking
 - Espresso for UI testing
@@ -386,6 +400,7 @@ The project includes unit tests, integration tests, and UI tests:
 ## Learning Outcomes
 
 This project demonstrates experience with:
+
 - Advanced Kotlin features (coroutines, sealed classes, extension functions)
 - Modern Android architecture with Jetpack libraries
 - API integration patterns
@@ -414,6 +429,7 @@ This project demonstrates experience with:
 This project is for educational and portfolio purposes.
 
 **Important Notes:**
+
 - All data (menus, restaurants, user information, payment cards) is fictional
 - No real payment processing is implemented (simulated validation only)
 - Original course API design by the professor; implementation is independent
