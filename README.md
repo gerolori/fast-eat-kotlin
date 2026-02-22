@@ -1,12 +1,12 @@
 <div align="center">
-  <img style="max-width: 100%; max-height: 150px;" alt="Fast Eat Logo" src="https://github.com/user-attachments/assets/06b824b2-0437-4f83-89b9-bf7ab3d69bac" />
+  <img style="max-width: 100%; max-height: 150;" alt="Fast Eat Logo" src="https://github.com/user-attachments/assets/06b824b2-0437-4f83-89b9-bf7ab3d69bac" />
   <h1>Fast Eat</h1>
   <p><i>Kotlin Android Client</i></p>
 </div>
 
 ---
 
-An Android application built with Kotlin and Jetpack Compose that demonstrates modern Android development practices. Browse restaurant menus, place orders, and track real-time drone deliveries on an interactive map.
+Fast Eat native Android client built with Kotlin and Jetpack Compose. Originally developed as a university project for Mobile Computing course, this repository demonstrates modern Android development with MVVM architecture, Material Design 3, and real-time drone delivery tracking.
 
 **Quick Navigation:** [Spring Boot Backend](https://github.com/gerolori/fast-eat-backend-springboot) • [Kotlin Android App](https://github.com/gerolori/fast-eat-kotlin) • [React Native App](https://github.com/gerolori/fast-eat-react-native) • [Architecture](https://github.com/gerolori/fast-eat-architecture) • [API Spec](https://github.com/gerolori/fast-eat-architecture/blob/main/api/openapi.yaml)
 
@@ -77,7 +77,7 @@ graph TB
 
 ### Project Structure
 
-```
+```filesys
 app/src/main/java/com/example/mangiaebasta/
 ├── data/
 │   ├── local/
