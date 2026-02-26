@@ -1,14 +1,23 @@
+# Fast Eat - Kotlin Android Client
+
 <div align="center">
-  <img style="max-width: 100%; max-height: 150;" alt="Fast Eat Logo" src="https://github.com/user-attachments/assets/06b824b2-0437-4f83-89b9-bf7ab3d69bac" />
-  <h1>Fast Eat</h1>
-  <p><i>Kotlin Android Client</i></p>
+  <img style="max-width: 100%; max-height: 150px;" alt="Fast Eat Logo" src="https://github.com/user-attachments/assets/06b824b2-0437-4f83-89b9-bf7ab3d69bac" />
 </div>
 
 ---
 
 Fast Eat native Android client built with Kotlin and Jetpack Compose. Originally developed as a university project for Mobile Computing course, this repository demonstrates modern Android development with MVVM architecture, Material Design 3, and real-time drone delivery tracking.
 
-**Quick Navigation:** [Spring Boot Backend](https://github.com/gerolori/fast-eat-backend-springboot) • [Kotlin Android App](https://github.com/gerolori/fast-eat-kotlin) • [React Native App](https://github.com/gerolori/fast-eat-react-native) • [Architecture](https://github.com/gerolori/fast-eat-architecture) • [API Spec](https://github.com/gerolori/fast-eat-architecture/blob/main/api/openapi.yaml)
+**For complete API specification, data models, and backend implementation details, see the [Architecture Repository](https://github.com/gerolori/fast-eat-architecture).**
+
+**Quick Navigation:** [Architecture & API Spec](https://github.com/gerolori/fast-eat-architecture) • [Spring Boot Backend](https://github.com/gerolori/fast-eat-backend-springboot) • [Kotlin Android App](https://github.com/gerolori/fast-eat-kotlin) • [React Native App](https://github.com/gerolori/fast-eat-react-native)
+
+---
+
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.3.10-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+[![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Latest-4285F4?logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
+[![Material Design 3](https://img.shields.io/badge/Material%20Design-3-757575?logo=materialdesign&logoColor=white)](https://m3.material.io/)
+[![Android](https://img.shields.io/badge/Android-API%2024%2B-3DDC84?logo=android&logoColor=white)](https://www.android.com/)
 
 ---
 
